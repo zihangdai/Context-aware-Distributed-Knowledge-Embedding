@@ -76,7 +76,7 @@ for i = 1, endIdx do
 			rel:expand(numEnt, relSize),
 			EntityEmbed.weight
 		})
-	sortScore, sortIdx = objScore:view(-1):sort(1)
+	sortScore, sortIdx = objScore:view(-1):sort(1, true)
 	local objRankFil, objRankRaw = 0, 0
 	for j = 1, sortIdx:size(1) do
 		local key = table.concat({subIdx[i],relIdx[i],sortIdx[j]}, '_')
@@ -96,7 +96,7 @@ for i = 1, endIdx do
 			rel:expand(numEnt, relSize),
 			obj:expand(numEnt, entSize)
 		})
-	sortScore, sortIdx = subScore:view(-1):sort(1)
+	sortScore, sortIdx = subScore:view(-1):sort(1, true)
 	local subRankFil, subRankRaw = 0, 0
 	for j = 1, sortIdx:size(1) do
 		local key = table.concat({sortIdx[j],relIdx[i],objIdx[i]}, '_')
@@ -116,7 +116,7 @@ for i = 1, endIdx do
 			RelationEmbed.weight,
 			obj:expand(numRel, entSize)
 		})
-	sortScore, sortIdx = relScore:view(-1):sort(1)
+	sortScore, sortIdx = relScore:view(-1):sort(1, true)
 	local relRankFil, relRankRaw = 0, 0
 	for j = 1, sortIdx:size(1) do
 		local key = table.concat({subIdx[i],sortIdx[j],objIdx[i]}, '_')
