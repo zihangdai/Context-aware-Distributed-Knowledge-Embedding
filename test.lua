@@ -15,7 +15,7 @@ cmd:text()
 cmd:text('Options')
 cmd:option('-modelFile', 'model.10', 'trained model file')
 cmd:option('-dataFile', 'Data/testdata.t7', 'test data file')
-cmd:option('-printEvery',10,'how many steps between printing out the information')
+cmd:option('-printEvery',100,'how many steps between printing out the information')
 cmd:option('-useGPU',1,'whether to use gpu for computation')
 cmd:text()
 
