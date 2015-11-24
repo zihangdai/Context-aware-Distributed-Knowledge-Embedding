@@ -1,3 +1,22 @@
+-- cuda utils
+function cudacheck(input)
+    if torch.Tensor():type() == 'torch.CudaTensor' then
+        input = input:cuda()
+    end 
+    return input
+end
+
+function range(b, e)
+    local result = cudacheck(torch.LongTensor.range(torch.LongTensor(e-b+1),b,e))
+    return result
+end
+
+function randperm(up)
+    local result = cudacheck(torch.LongTensor.randperm(torch.LongTensor(up),up))
+    return result
+end
+
+-- combine parameters of several networks together
 function combineParameters(...)
     --[[ like module:getParameters, but operates on many modules ]]--
 
@@ -99,6 +118,7 @@ function combineParameters(...)
     return flatParameters, flatGradParameters
 end
 
+-- clone Many networks with shared parameters
 function cloneManyTimes(net, T)
     local clones = {}
     local params, gradParams
