@@ -6,7 +6,7 @@ require 'nngraph'
 require 'logroll'
 
 require 'TripleDataLoader'
-require '../Attention/init.lua'
+require 'model_utils'
 
 local cmd = torch.CmdLine()
 cmd:text()
